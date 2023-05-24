@@ -45,12 +45,12 @@ export default {
 </script>
 
 <template>
-    <div className="mater-input">
-        <label className="mater-input__label" htmlFor="master-input-id">{{
+    <div class="mater-input">
+        <label class="mater-input__label" html="master-input-id">{{
                 label
             }}</label>
         <input
-            className="mater-input__input input"
+            class="mater-input__input input"
             :class="{ input_error: errorMessage !== '' }"
             :value="inputValue"
             :type="type"
@@ -59,7 +59,7 @@ export default {
             @input="setInputValue"
             id="master-input-id"
         />
-        <span className="mater-input__error-messages" v-if="errorMessage">{{
+        <span class="mater-input__error-messages" v-if="errorMessage">{{
                 errorMessage
             }}</span>
     </div>
