@@ -1,12 +1,12 @@
 <script>
 import { defineComponent } from 'vue'
-import MaterInput from '@/components/MaterInput.vue'
+import MasterInput from '@/components/MasterInput.vue'
 import MasterSelector from '@/components/MasterSelector.vue'
 
 export default defineComponent({
     components: {
         MasterSelector,
-        MaterInput
+        MasterInput
     },
 
     data() {
@@ -83,7 +83,7 @@ export default defineComponent({
 
 <template>
     <div class="container">
-        <MaterInput
+        <MasterInput
                 :input-value="inputValue"
                 :is-disabled="inputDisabled"
                 :placeholder="inputPlaceholder"
