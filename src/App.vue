@@ -2,9 +2,11 @@
 import { defineComponent } from 'vue'
 import MasterInput from '@/components/MasterInput.vue'
 import MasterSelector from '@/components/MasterSelector.vue'
+import MasterButton from "@/components/MasterButton.vue";
 
 export default defineComponent({
     components: {
+        MasterButton,
         MasterSelector,
         MasterInput
     },
@@ -65,7 +67,9 @@ export default defineComponent({
             selectorValue: {
                 name: '',
                 id: ''
-            }
+            },
+            buttonDisabled:false,
+            buttonTitle:'PRESS'
         }
     },
 
@@ -76,8 +80,12 @@ export default defineComponent({
 
         choiceItemHandler(id) {
             this.selectorValue = this.selectorOptions.find((item) => item.id === id)
+        },
+        setClickBtn(){
+            console.log('123')
         }
-    }
+    },
+
 })
 </script>
 
@@ -98,6 +106,11 @@ export default defineComponent({
                 :options="selectorOptions"
                 :selector-value="selectorValue"
                 @choiceItem="choiceItemHandler"
+        />
+        <MasterButton
+            :button-disabled="buttonDisabled"
+            :button-title="buttonTitle"
+            @clickBtn="setClickBtn"
         />
     </div>
 </template>
