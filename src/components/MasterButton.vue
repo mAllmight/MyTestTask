@@ -36,6 +36,7 @@ props: {
 
 <style lang="scss" scoped>
 .master-button__btn {
+    margin-top: 250px;
     width: 141px;
     height: 48px;
     background: #FFDA7A;

@@ -3,12 +3,14 @@ import { defineComponent } from 'vue'
 import MasterInput from '@/components/MasterInput.vue'
 import MasterSelector from '@/components/MasterSelector.vue'
 import MasterButton from "@/components/MasterButton.vue";
+import FilterSelector from "@/components/FilterSelector.vue";
 
 export default defineComponent({
     components: {
         MasterButton,
         MasterSelector,
-        MasterInput
+        MasterInput,
+        FilterSelector
     },
 
     data() {
@@ -69,9 +71,46 @@ export default defineComponent({
                 id: ''
             },
             buttonDisabled:false,
-            buttonTitle:'PRESS'
-        }
-    },
+            buttonTitle:'PRESS',
+
+            filterLabel: 'Label',
+            filterPlaceholder: 'Поиск',
+            filterDisabled: false,
+            filterOptions: [
+            {
+                name: 'Item 1',
+                id: 1
+            },
+            {
+                name: 'Item 2',
+                id: 2
+            },
+            {
+                name: 'Item 3',
+                id: 3
+            },
+            {
+                name: 'Item 4',
+                id: 4
+            },
+            {
+                name: 'Item 5',
+                id: 5
+            },
+            {
+                name: 'Item 6',
+                id: 6
+            },
+            {
+                name: 'Item 7',
+                id: 7
+            }],
+
+            filterValue: [{
+            name: '',
+            id: ''
+            }],
+        }},
 
     methods: {
         setInputValueHandler(value) {
@@ -80,6 +119,13 @@ export default defineComponent({
 
         choiceItemHandler(id) {
             this.selectorValue = this.selectorOptions.find((item) => item.id === id)
+        },
+
+        choiceFilterHandler() {
+            this.filterValue = this.filterOptions.find((item) => item.id === id)
+        },
+        choiceCheckHandler() {
+            this.filterValue = this.filterOptions.find((item) => item.id === id)
         },
         setClickBtn(){
             console.log('123')
@@ -106,6 +152,15 @@ export default defineComponent({
                 :options="selectorOptions"
                 :selector-value="selectorValue"
                 @choiceItem="choiceItemHandler"
+        />
+        <FilterSelector
+            :filter-label="filterLabel"
+            :filter-placeholder="filterPlaceholder"
+            :filter-disabled="filterDisabled"
+            :filter-options="filterOptions"
+            :filter-value="filterValue"
+            @choiceFilterItem="choiceFilterHandler"
+            @choiceCheckItem="choiceCheckHandler"
         />
         <MasterButton
             :button-disabled="buttonDisabled"
